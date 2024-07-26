@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Car - Sign Up</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/signup.css">
+
+
+    <style>
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position:absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+        .icon-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .icon-button img {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h2>Rent A Car - Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <span id="nameError" class="error-message"></span>
+            <input type="email" id="email" placeholder="Email" required>
+            <span id="emailError" class="error-message"></span>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('password')"></span>
+            </div>
+            <span id="passwordError" class="error-message"></span>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')"></span>
+            </div>
+            <span id="confirmPasswordError" class="error-message"></span>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+        
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+    </div>
+
+    <!-- Firebase JS SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script type="module" src="js/signUp.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+html{
+    scroll-behavior: smooth;
+}
+/* Center the search bar */
+#searchBar {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.5%;
+    border-color:#696969;
+}
+.bold-text{
+  font: weight 300px;
+  color: #d41515;
+}
+.car-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 20px 20px 20px 20px;
+  transition: 1s all ease-in-out;
+
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  height: 450px;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  
+}
+
+.card-body {
+  padding: 16px;
+ 
+}
+
+.card-title {
+  font-size: 1.5em;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  margin: 4px 0;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #796c6c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.delete-button:hover {
+  background-color: #c01010;
+}
+.edit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px; /* Adjust margin as needed */
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px; /* Vertical padding, adjust as needed */
+  width: 100%; /* Make button width 100% of parent container */
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center; /* Center text horizontally */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: -250px;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar input, .sidebar button {
+  width: calc(100% - 20px);
+  margin: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.sidebar button{
+  background-color:#F77D0A;
+  
+}
+.save-btn:hover{
+  background-color: #4c1496; 
+}
+.edit-label{
+  padding-left: 10px;
+ 
+}
+
+.sidebar input {
+  color: black;
+  
+}

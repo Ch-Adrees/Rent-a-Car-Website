@@ -1,0 +1,81 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2929;
+    margin: 0;
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+} */
+ .outer-container{
+    display: flex;
+
+justify-content: center;
+ }
+ .nav-item.nav-link:active
+ {
+    color:#F77D0A
+ }
+
+.container {
+    max-width: 900px;
+    width: 60%;
+    /* margin: 50px auto; */
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    margin: 10px;
+    justify-content: center;
+    
+    
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input, select {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #747070;
+    border-radius: 8px;
+    
+
+}
+
+button {
+    padding: 20px 20px;
+    background-color: #F77D0A;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+
+}
+
+button:hover {
+    background-color: #0263ca;
+}
+.image-container img {
+    max-width: 100%; /* Ensure the image doesn't overflow the container */
+    width: 200px; /* Set the width as needed */
+    height: 200px; /* Set the height as needed */
+    display: inline-block;
+    border: 1px solid #ccc; /* Optional: Add a border to the image */
+    border-radius: 8px; /* Optional: Add rounded corners to the image */
+    object-fit: cover; /* Ensure the image covers the specified width and height without distortion */
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Rent A Car - Admin Page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Flatpickr Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!--Navbar Start-->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <h1 class="text-uppercase text-primary mb-1">Rent A Car</h1>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="admin.html" class="nav-item nav-link">Home</a>
+                        <a href="bookings.html" class="nav-item nav-link">Bookings</a>
+                        <a href="./edit_car.html" class="nav-item nav-link">Add a car</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="close-btn">&times;</span>
+        <label for="edit-input" class="edit-label">Edit Price :</label>
+        <input type="text" id="edit-input" placeholder="Edit Value">
+        <button class="save-btn" id="save-btn">Save</button>
+    </div>
+    <!-- Search Start -->
+    <div class="container-fluid bg-white pt-3 px-lg-5">
+        <div class="row mx-n2">
+            <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+                <select class="custom-select px-4 mb-3" style="height: 50px;">
+                    <option value="">Select Location</option>
+                    <option value="gujrat">Gujrat</option>
+                    <option value="lahore">Lahore</option>
+                    <option value="gujranwala">Gujranwala</option>
+                    <option value="faisalabad">Faisalabad</option>
+                    <option value="johartown">JoharTown</option>
+                    <option value="ban road">Ban Road</option>
+                    <option value="islamabad">Islamabad</option>
+                    <option value="liberty">Liberty</option>
+                    <option value="shahdara">Shahdara</option>
+                    <option value="gajumata">Gajumata</option>
+                </select>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+                <div class="form-group">
+                    <!-- <label for="pickup-datetime">Pickup Date and Time</label> -->
+                    <input type="text" class="form-control datetimepicker-input" id="pickup-datetime" placeholder="Select Date and Time" style="height: 50px;" />
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+                <input type="text" class="form-control mb-3" id="car-name" placeholder="Enter Car Name" style="height: 50px;" oninput="capitalizeFirstLetter(this)" />
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 px-2">
+                <button class="btn btn-primary btn-block mb-3" id="search-button" type="submit" style="height: 50px;">Search</button>
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Container having the cards of car -->
+    <div class="car-container" id="car-container"></div>
+
+    <!-- Include JavaScript files -->
+    <script type="module" src="/js/admin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
+    <script>
+        $(function () {
+            // Initialize flatpickr
+            $('#pickup-datetime').flatpickr({
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                locale: "en"
+            });
+        });
+
+        function capitalizeFirstLetter(input) {
+            let value = input.value;
+            if (value.length > 0) {
+                input.value = value.charAt(0).toUpperCase() + value.slice(1);
+            }
+        }
+       
+    </script>
+</body>
+</html>

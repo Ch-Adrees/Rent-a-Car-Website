@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Car - Add Car</title>
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Flatpickr Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/edit-car.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <h1 class="text-uppercase text-primary mb-1">Royal Cars</h1>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="admin.html" class="nav-item nav-link">Home</a>
+                        <a href="bookings.html" class="nav-item nav-link">Bookings</a>
+                        <a href="./edit_car.html" class="nav-item nav-link">Add a car</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="outer-container">
+    <div class="container">
+        <h1>Add Car in Your Collection</h1>
+        <div class="form-container">
+        <form id="carForm">
+            <label for="carName">Car Name:</label>
+            <input type="text" id="carName" name="carName" required>
+            <label for="carCompany">Car Company:</label>
+            <select id="carCompany" name="carCompany" required>
+                <option value="">Select Company</option>
+                <option value="toyota">Toyota</option>
+                <option value="honda">Honda</option>
+                <option value="hundai">Hundai</option>
+                <option value="kia">Kia</option>
+                <option value="suzuki">Suzuki</option>
+                <option value="dihatsu">Dihatsu</option>
+                <option value="audi">Audi</option>
+                <option value="bmw">BMW</option>
+                <option value="lexus">Lexus</option>
+                 
+             </select>
+            <label for="carLocation">Car Location:</label>
+            <select id="carLocation" name="carLocation" required>
+                <option value="">Select Location</option>
+                <option value="gujrat">Gujrat </option>
+                <option value="lahore">Lahore</option>
+                <option value="gujranwala">Gujranwala</option>
+                <option value="faisalabad">Faisalabad </option>
+                <option value="johartown">JoharTown</option>
+                <option value="ban road">Ban Road</option>
+                <option value="islamabad">Islamabad</option>
+                <option value="liberty">Liberty</option>
+                <option value="shahdara">Shahdara</option>
+                <option value="gajumata">Gajumata</option>
+                
+                 Add more options as needed 
+            </select>
+
+            <label for="carModel">Car Model:</label>
+            <input type="text" id="carModel" name="carModel" required>
+
+            <label for="carPricePerDay">Price Per Day:</label>
+            <input type="number" id="carPricePerDay" name="carPricePerDay" required>
+
+            <label for="carNumber">Car Number:</label>
+            <input type="text" id="carNumber" name="carNumber" required>
+
+            <label for="carImages">Car Images:</label>
+            <input type="file" id="fileInput" name="carImages"  required>
+
+            <div class="selected-image-container" id="selected-image-container">
+            </div>
+             
+            <button type="submit" id="submit">Submit</button>
+    
+        </form>
+    </div>
+        <script  type="module" src='./js/edit-car.js'></script>
+    </div>
+    </div>
+    
+</body>
+</html>

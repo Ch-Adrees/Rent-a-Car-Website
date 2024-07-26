@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent A Car - Reservation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservation.css">
+    <link rel="stylesheet" href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+</head>
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="homepage.html" class="navbar-brand">
+                    <h1 class="text-uppercase text-primary mb-1">Rent A Car</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="homepage.html" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <div class="container">
+                                    <p id="user-name" class="mb-1"></p>
+                                    <p id="user-email-dropdown" class="mb-3"></p>
+                                    <button class="btn btn-danger btn-block" id="sign-out">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Reservation Form Start -->
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Car Reservation</h2>
+                <form id="reservation-form">
+                    <div class="form-group">
+                        <label for="car-name">Car Name</label>
+                        <input type="text" class="form-control" id="car-name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="car-model">Car Model</label>
+                        <input type="text" class="form-control" id="car-model" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="car-number">Car Number</label>
+                        <input type="text" class="form-control" id="car-number" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="car-price">Price</label>
+                        <input type="text" class="form-control" id="car-price" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="car-company">Company</label>
+                        <input type="text" class="form-control" id="car-company" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-location">Pickup Location</label>
+                        <select class="form-control" id="pickup-location">
+                            <option value="">Select Location</option>
+                            <option value="gujrat">Gujrat</option>
+                            <option value="lahore">Lahore</option>
+                            <option value="gujranwala">Gujranwala</option>
+                            <option value="faisalabad">Faisalabad</option>
+                            <option value="johartown">JoharTown</option>
+                            <option value="ban road">Ban Road</option>
+                            <option value="chorangi">Islamabad</option>
+                            <option value="liberty">Liberty</option>
+                            <option value="shahdara">Shahdara</option>
+                            <option value="gajumata">Gajumata</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="driver">Driver</label>
+                        <select class="form-control" id="driver">
+                            <option value="">Select </option>
+                            <option value="with-driver">With Driver (+$1000)</option>
+                            <option value="without-driver">Without Driver</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment-method">Payment Method</label>
+                        <select class="form-control" id="payment-method">
+                            <option value="">Select Payment Method</option>
+                            <option value="easypaisa">Easypaisa</option>
+                            <option value="jazzcash">JazzCash</option>
+                            <option value="card">Credit/Debit Cards</option>
+                            <option value="cod">Cash on Delivery (COD)</option>
+                        </select>
+                    </div>
+                    <div id="payment-forms" class="mt-3">
+                        <!-- Easypaisa Form -->
+                        <div id="easypaisa-form" class="d-none">
+                            <div class="form-group">
+                                <label for="easypaisa-number">Easypaisa Number</label>
+                                <input type="text" class="form-control" id="easypaisa-number">
+                            </div>
+                        </div>
+                        <!-- JazzCash Form -->
+                        <div id="jazzcash-form" class="d-none">
+                            <div class="form-group">
+                                <label for="jazzcash-number">JazzCash Number</label>
+                                <input type="text" class="form-control" id="jazzcash-number">
+                            </div>
+                        </div>
+                        <!-- Card Form -->
+                        <div id="card-form" class="d-none">
+                            <div class="form-group">
+                                <label for="card-number">Card Number</label>
+                                <input type="text" class="form-control" id="card-number">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-expiry">Expiry Date</label>
+                                <input type="text" class="form-control" id="card-expiry">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvv">CVV</label>
+                                <input type="text" class="form-control" id="card-cvv">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row mt-3">
+                        <div class="col-md-6">
+                            <label for="pickup-datetime">Pickup Date and Time</label>
+                            <div class="input-group date" id="pickup-datetime" data-target-input="nearest">
+                                <div class="input-group-append" data-target="#pickup-datetime" data-toggle="datetimepicker">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#pickup-datetime" />
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="dropoff-datetime">Drop-off Date and Time</label>
+                            <div class="input-group date" id="dropoff-datetime" data-target-input="nearest">
+                                <div class="input-group-append" data-target="#dropoff-datetime" data-toggle="datetimepicker">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#dropoff-datetime" />
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <label for="total-price">Total Price</label>
+                        <input type="text" class="form-control" id="total-price" readonly>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-3">Confirm Reservation</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Reservation Form End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script type="module" src="js/reservation.js"></script>
+
+      <!-- User Info and Sign Out -->
+      <script type="module">
+        import { auth } from './js/firebase_config.js';
+        import { getUserProfile, logoutUser } from './js/services.js';
+
+        function updateUserUI(user) {
+            if (user) {
+                getUserProfile(user.uid).then(profile => {
+                    document.getElementById('user-name').textContent = profile.name;
+                    document.getElementById('user-email-dropdown').textContent = profile.email;
+                });
+            } else {
+                document.getElementById('user-name').textContent = '';
+                document.getElementById('user-email-dropdown').textContent = '';
+            }
+        }
+
+        // Initialize Firebase Auth listener
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                updateUserUI(user);
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        document.getElementById('sign-out').addEventListener('click', () => {
+            logoutUser().then(() => {
+                window.location.href = 'login.html';
+            });
+        });
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

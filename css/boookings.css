@@ -1,0 +1,61 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width:100wv; /* Adjust based on your preference */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px); /* Two cards per row, accounting for gap */
+    max-width: 400px;
+    padding: 10px;
+    margin: 20px 0; /* Adjust vertical spacing as needed */
+    text-align: left;
+    height: auto;
+}
+.card .label {
+    
+    color: #333; /* Change this color as needed */
+  }
+
+.card h2 {
+    margin-top: 0;
+    justify-content: center;
+    display: flex;
+}
+
+.card p {
+    color: #777;
+    margin: 5px 0;
+}
+
+.card .price {
+    font-size: 1.5em;
+    color: #e74c3c;
+    margin: 80px,20px,10px,0px;
+    justify-content: right;
+    display: flex;
+}
+.price-wrapper {
+    margin-top: 16px;
+ /* Add space from the top */
+  }
+
+.card .date {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.card .driver {
+    font-size: 1.1em;
+    color: #27ae60;
+    
+}
+
+.card .driver.no {
+    color: #e74c3c;
+}

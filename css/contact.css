@@ -1,0 +1,22 @@
+/* Custom styles for the contact form */
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.contact-form .form-control {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+.contact-form .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}

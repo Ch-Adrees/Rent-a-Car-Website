@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Rent A Car - My Reservations</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Replace the current history state to prevent back navigation
+            history.replaceState(null, null, window.location.href);
+            window.addEventListener('popstate', function(event) {
+                // Push a new state to prevent navigating back to the login page
+                history.pushState(null, null, window.location.href);
+            });
+        });
+    </script>
+
+    <!-- Flatpickr Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <link href="img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/homepage.css"> -->
+    <link rel="stylesheet" href="css/currentRes.css">
+    
+</head>
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="position-relative px-lg-5" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-secondary navbar-dark py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="homepage.html" class="navbar-brand">
+                    <h1 class="text-uppercase text-primary mb-1">Rent A Car</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="homepage.html" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About</a>
+                        <a href="service.html" class="nav-item nav-link">Service</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <div class="container">
+                                    <p id="user-name" class="mb-1"></p>
+                                    <p id="user-email-dropdown" class="mb-3"></p>
+                                    <button class="btn btn-danger btn-block" id="sign-out">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+      <!-- Page Header Start -->
+    <div class="container-fluid page-header">
+        <h1 class="display-3 text-uppercase text-white mb-3">My Reservations</h1>
+        <div class="d-inline-flex text-white">
+            <h6 class="text-uppercase m-0"><a class="text-white" href="">Rent A Car</a></h6>
+            <h6 class="text-body m-0 px-3">/</h6>
+            <h6 class="text-uppercase text-body m-0">My Reservations</h6>
+        </div>
+    </div>
+    <!-- Page Header Start -->
+
+    <!-- Reservations Container Start -->
+    <div class="container my-5">
+        <div class="row" id="reservations-container">
+            <!-- Reservations will be dynamically inserted here -->
+        </div>
+    </div>
+    <!-- Reservations Container End -->
+
+    <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="js/firebase_config.js" type="module"></script>
+    <script src="js/services.js" type="module"></script>
+    <script src="js/reservations.js" type="module"></script>
+
+    <!-- User Info and Sign Out -->
+    <script type="module">
+        import { auth } from './js/firebase_config.js';
+        import { getUserProfile, logoutUser } from './js/services.js';
+
+        function updateUserUI(user) {
+            if (user) {
+                getUserProfile(user.uid).then(profile => {
+                    document.getElementById('user-name').textContent = profile.name;
+                    document.getElementById('user-email-dropdown').textContent = profile.email;
+                });
+            } else {
+                document.getElementById('user-name').textContent = '';
+                document.getElementById('user-email-dropdown').textContent = '';
+            }
+        }
+
+        // Initialize Firebase Auth listener
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                updateUserUI(user);
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        document.getElementById('sign-out').addEventListener('click', () => {
+            logoutUser().then(() => {
+                window.location.href = 'login.html';
+            });
+        });
+
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+
+    <!-- Fetch and Display Reservations -->
+    <script type="module">
+        import { auth } from './js/firebase_config.js';
+        import { getUserReservations } from './js/services.js';
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                getUserReservations(user.uid).then(reservations => {
+                    const container = document.getElementById('reservations-container');
+                    if (reservations.length > 0) {
+                        reservations.forEach(reservation => {
+                            const card = document.createElement('div');
+                            card.className = 'col-lg-4 col-md-6 mb-4';
+                            card.innerHTML = `
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${reservation.carName}</h5>
+                                        <p class="card-text"><strong>Company:</strong> ${reservation.carCompany}</p>
+                                        <p class="card-text"><strong>Model:</strong> ${reservation.carModel}</p>
+                                        <p class="card-text"><strong>Number:</strong> ${reservation.carNumber}</p>
+                                        <p class="card-text"><strong>Price:</strong> $${reservation.carPrice}</p>
+                                        <p class="card-text"><strong>Driver:</strong> ${reservation.driver}</p>
+                                        <p class="card-text"><strong>Pickup Location:</strong> ${reservation.pickupLocation}</p>
+                                        <p class="card-text"><strong>Pickup DateTime:</strong> ${reservation.pickupDateTime.toDate()}</p>
+                                        <p class="card-text"><strong>Dropoff DateTime:</strong> ${reservation.dropoffDateTime.toDate()}</p>
+                                        <p class="card-text"><strong>Payment Method:</strong> ${reservation.paymentMethod}</p>
+                                        <p class="card-text"><strong>Total Price:</strong> $${reservation.totalPrice}</p>
+                                    </div>
+                                </div>
+                            `;
+                            container.appendChild(card);
+                        });
+                    } else {
+                        const noReservations = document.createElement('div');
+                        noReservations.className = 'alert alert-info text-center';
+                        noReservations.textContent = 'You have not reserved any car.';
+                        container.appendChild(noReservations);
+                    }
+                }).catch(error => {
+                    console.error('Error fetching reservations:', error);
+                });
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
